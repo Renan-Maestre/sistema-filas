@@ -48,3 +48,26 @@ export async function POST(request: Request) {
     );
   }
 }
+
+export async function PATCH(request: Request) {
+  try {
+    const body = await request.json();
+    const { id } = body;
+
+    const ticketAtualizado = await prisma.ticket.update({
+      where: { id: id },
+      data: {
+        status: "CHAMADO",
+        chamadoEm: new Date(),
+      },
+    });
+
+    return NextResponse.json(ticketAtualizado, { status: 200 });
+  } catch (error) {
+    console.error("Erro ao atualizar ticket:", error);
+    return NextResponse.json(
+      { error: "Erro ao chamar o próximo da fila." },
+      { status: 500 },
+    );
+  }
+}
