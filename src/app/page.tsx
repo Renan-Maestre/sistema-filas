@@ -1,6 +1,6 @@
 "use client";
 
-import { MonitorSmartphone, LayoutDashboard, Users, ArrowRight, Sparkles } from "lucide-react";
+import { MonitorSmartphone, LayoutDashboard, Users, ArrowRight } from "lucide-react";
 import Link from "next/link";
 
 export default function Home() {
